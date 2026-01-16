@@ -8,6 +8,7 @@ export type AppConfigType = {
       cardHeight: number;
       cardWidth: number;
       cardSpace: number;
+      branchHeight: number;
     };
     branch: {
       lineColor: string;

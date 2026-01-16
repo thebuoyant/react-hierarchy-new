@@ -1,6 +1,8 @@
 import "./ReactHierarchy.css";
 import { AppConfigType } from "../../types/app-config.types";
 import { APP_CONFIG } from "../../app.config";
+import { useEffect } from "react";
+import { useLayoutStore } from "../../store/layoutStore";
 
 export type ReactHierarchyProps = {
   titleType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -11,6 +13,33 @@ export default function ReactHierarchy({
   titleType = "h5",
   appConfig = APP_CONFIG,
 }: ReactHierarchyProps) {
+  // layout store
+  const cardWidth = useLayoutStore((s) => s.cardWidth);
+  const cardHeight = useLayoutStore((s) => s.cardHeight);
+  const cardSpace = useLayoutStore((s) => s.cardSpace);
+  const branchHeight = useLayoutStore((s) => s.branchHeight);
+
+  const setCardWidth = useLayoutStore((s) => s.setCardWidth);
+  const setCardHeight = useLayoutStore((s) => s.setCardHeight);
+  const setCardSpace = useLayoutStore((s) => s.setCardSpace);
+  const setBranchHeight = useLayoutStore((s) => s.setBranchHeight);
+
+  useEffect(() => {
+    setCardWidth(cardWidth);
+    setCardHeight(cardHeight);
+    setCardSpace(cardSpace);
+    setBranchHeight(branchHeight);
+  }, [
+    cardWidth,
+    cardHeight,
+    cardSpace,
+    branchHeight,
+    setCardHeight,
+    setCardWidth,
+    setCardSpace,
+    setBranchHeight,
+  ]);
+
   return (
     <div className="react-hierarchy">
       <div className="layout-wrapper">
