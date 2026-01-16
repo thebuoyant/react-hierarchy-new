@@ -22,7 +22,6 @@ export const DEFAULT_MOCK_DATA = {
         valueA: "Node-AA-Value-A",
         valueB: "Node-AA-Value-B",
       },
-      contentType: "person",
       avatarUrl: "https://mui.com/static/images/avatar/1.jpg",
       showAvatar: true,
       layout: {

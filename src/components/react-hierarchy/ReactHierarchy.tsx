@@ -3,15 +3,19 @@ import { AppConfigType } from "../../types/app-config.types";
 import { APP_CONFIG } from "../../app.config";
 import { useEffect } from "react";
 import { useLayoutStore } from "../../store/layoutStore";
+import { HierarchyNodeType } from "../../types/hierarchy-node.types";
+import { DEFAULT_MOCK_DATA } from "../../_mock-data/default-mock-data";
 
 export type ReactHierarchyProps = {
   titleType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   appConfig: AppConfigType;
+  appData: HierarchyNodeType;
 };
 
 export default function ReactHierarchy({
   titleType = "h5",
   appConfig = APP_CONFIG,
+  appData = DEFAULT_MOCK_DATA,
 }: ReactHierarchyProps) {
   // layout store
 
@@ -22,6 +26,8 @@ export default function ReactHierarchy({
 
   useEffect(() => {
     const { card, branch } = appConfig.layout;
+
+    console.log("appData", appData);
     setCardWidth(card.cardWidth);
     setCardHeight(card.cardHeight);
     setCardSpace(card.cardWidth);
