@@ -14,10 +14,6 @@ export default function ReactHierarchy({
   appConfig = APP_CONFIG,
 }: ReactHierarchyProps) {
   // layout store
-  const cardWidth = useLayoutStore((s) => s.cardWidth);
-  const cardHeight = useLayoutStore((s) => s.cardHeight);
-  const cardSpace = useLayoutStore((s) => s.cardSpace);
-  const branchHeight = useLayoutStore((s) => s.branchHeight);
 
   const setCardWidth = useLayoutStore((s) => s.setCardWidth);
   const setCardHeight = useLayoutStore((s) => s.setCardHeight);
@@ -25,20 +21,12 @@ export default function ReactHierarchy({
   const setBranchHeight = useLayoutStore((s) => s.setBranchHeight);
 
   useEffect(() => {
-    setCardWidth(cardWidth);
-    setCardHeight(cardHeight);
-    setCardSpace(cardSpace);
-    setBranchHeight(branchHeight);
-  }, [
-    cardWidth,
-    cardHeight,
-    cardSpace,
-    branchHeight,
-    setCardHeight,
-    setCardWidth,
-    setCardSpace,
-    setBranchHeight,
-  ]);
+    const { card, branch } = appConfig.layout;
+    setCardWidth(card.cardWidth);
+    setCardHeight(card.cardHeight);
+    setCardSpace(card.cardWidth);
+    setBranchHeight(branch.height);
+  }, [appConfig, setCardHeight, setCardWidth, setCardSpace, setBranchHeight]);
 
   return (
     <div className="react-hierarchy">

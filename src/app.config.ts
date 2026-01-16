@@ -8,9 +8,9 @@ export const APP_CONFIG = {
       cardHeight: 170,
       cardWidth: 300,
       cardSpace: 12,
-      branchHeight: 48,
     },
     branch: {
+      height: 48,
       lineColor: "#666666",
     },
   },
