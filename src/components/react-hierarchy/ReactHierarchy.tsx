@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useLayoutStore } from "../../store/layoutStore";
 import { HierarchyNodeType } from "../../types/hierarchy-node.types";
 import { DEFAULT_MOCK_DATA } from "../../_mock-data/default-mock-data";
+import Header from "../header/Header";
 
 export type ReactHierarchyProps = {
   titleType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -28,6 +29,7 @@ export default function ReactHierarchy({
     const { card, branch } = appConfig.layout;
 
     console.log("appData", appData);
+    console.log("appConfig", appConfig);
     setCardWidth(card.cardWidth);
     setCardHeight(card.cardHeight);
     setCardSpace(card.cardWidth);
@@ -37,7 +39,9 @@ export default function ReactHierarchy({
   return (
     <div className="react-hierarchy">
       <div className="layout-wrapper">
-        <div className="header-wrapper">header</div>
+        <div className="header-wrapper">
+          <Header />
+        </div>
         <div className="layer-a-wrapper">
           <div className="layer-a-branch-wrapper">layer-a-branch</div>
           <div className="layer-a-cards-wrapper">layer-a-cards</div>
