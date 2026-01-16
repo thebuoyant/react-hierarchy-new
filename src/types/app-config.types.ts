@@ -1,4 +1,8 @@
 export type AppConfigType = {
+  general: {
+    appTitle: string;
+    showAppTitle: boolean;
+  };
   layout: {
     card: {
       cardHeight: number;

@@ -11,5 +11,9 @@ export default function ReactHierarchy({
   titleType = "h3",
   appConfig = APP_CONFIG,
 }: ReactHierarchyProps) {
-  return <div className="react-hierarchy">react hierarchy</div>;
+  return (
+    <div className="react-hierarchy">
+      <div className="layout">layout</div>
+    </div>
+  );
 }
