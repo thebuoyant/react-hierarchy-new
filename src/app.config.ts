@@ -19,5 +19,11 @@ export const APP_CONFIG = {
       activeBackgroundColor: "	#e1e5ef",
       activeColor: "#000000",
     },
+    branchNavButton: {
+      defaultBackgroundColor: "#ededed",
+      defaultColor: "#000000",
+      activeBackgroundColor: "	#d1eed4",
+      activeColor: "#000000",
+    },
   },
 };
