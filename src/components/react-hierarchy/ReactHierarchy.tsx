@@ -9,6 +9,7 @@ import Header from "../header/Header";
 import { APP_CONST } from "../../constants/app.const";
 import { useDataStore } from "../../store/dataStore";
 import { extractNodesForLevels } from "../../util/node.util";
+import LayerACards from "../layer-a-cards/LayerACards";
 
 export type ReactHierarchyProps = {
   appConfig: AppConfigType;
@@ -135,7 +136,7 @@ export default function ReactHierarchy({
                     : calculatedWidthLayerA,
               }}
             >
-              layer-a-cards
+              <LayerACards />
             </div>
           </div>
         )}
