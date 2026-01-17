@@ -13,5 +13,11 @@ export const APP_CONFIG = {
       height: 48,
       lineColor: "#666666",
     },
+    cardNavButton: {
+      defaultBackgroundColor: "#ededed",
+      defaultColor: "#000000",
+      activeBackgroundColor: "	#e1e5ef",
+      activeColor: "#000000",
+    },
   },
 };

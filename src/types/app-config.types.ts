@@ -13,5 +13,11 @@ export type AppConfigType = {
       height: number;
       lineColor: string;
     };
+    cardNavButton: {
+      defaultBackgroundColor: string;
+      defaultColor: string;
+      activeBackgroundColor: string;
+      activeColor: string;
+    };
   };
 };
