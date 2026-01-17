@@ -2,12 +2,12 @@ import { Chip } from "@mui/material";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { APP_CONFIG } from "../../app.config";
-import { CardNavButtonClickPayload } from "../../types/graph.types";
+import { CardNavButtonClickPayloadType } from "../../types/graph.types";
 
 export type CardNavButtonProps = {
   counter?: number;
   isExpanded?: boolean;
-  onClick?: (payload: CardNavButtonClickPayload) => void;
+  onClick?: (payload: CardNavButtonClickPayloadType) => void;
   nodeId: string;
   positionIndex: number;
 };

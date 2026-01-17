@@ -1,4 +1,4 @@
-export type CardNavButtonClickPayload = {
+export type CardNavButtonClickPayloadType = {
   expanded: boolean;
   counter: number;
   nodeId: string;
