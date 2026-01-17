@@ -1,15 +1,15 @@
 import { useDataStore } from "../../store/dataStore";
 import { HierarchyNodeType } from "../../types/hierarchy-node.types";
 import Card from "../card/Card";
-import "./LayerACards.css";
+import "./LayerBCards.css";
 
-export default function LayerACards() {
+export default function LayerBCards() {
   // data store
-  const dataLayerA = useDataStore((s) => s.dataLayerA);
+  const dataLayerB = useDataStore((s) => s.dataLayerB);
 
   return (
-    <div className="layer-a-cards">
-      {dataLayerA.map((node: HierarchyNodeType, index: number) => {
+    <div className="layer-b-cards">
+      {dataLayerB.map((node: HierarchyNodeType, index: number) => {
         const content = <div>some content layer a</div>;
         const handleNavButtonClick = () => {
           const selectedNodeId = node.id;
