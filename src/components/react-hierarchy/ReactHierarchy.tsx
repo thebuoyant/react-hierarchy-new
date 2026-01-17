@@ -8,6 +8,7 @@ import { DEFAULT_MOCK_DATA } from "../../_mock-data/default-mock-data";
 import Header from "../header/Header";
 import { APP_CONST } from "../../constants/app.const";
 import { useDataStore } from "../../store/dataStore";
+import { extractNodesForLevels } from "../../util/node.util";
 
 export type ReactHierarchyProps = {
   appConfig: AppConfigType;
@@ -34,6 +35,9 @@ export default function ReactHierarchy({
 
   // data store
   const setData = useDataStore((s) => s.setData);
+  const setDataLayerA = useDataStore((s) => s.setDataLayerA);
+  const setDataLayerB = useDataStore((s) => s.setDataLayerB);
+  const setDataLayerC = useDataStore((s) => s.setDataLayerC);
 
   useEffect(() => {
     const { card, branch } = appConfig.layout;
@@ -43,6 +47,13 @@ export default function ReactHierarchy({
     setCardSpace(card.cardWidth);
     setBranchHeight(branch.height);
     setData(appData);
+
+    const layerData = extractNodesForLevels(appData);
+    const { arrayLevelA, arrayLevelB, arrayLevelC } = layerData;
+
+    console.log("arrayLevelA", arrayLevelA);
+    console.log("arrayLevelB", arrayLevelB);
+    console.log("arrayLevelC", arrayLevelC);
   }, [
     appConfig,
     appData,
@@ -51,6 +62,9 @@ export default function ReactHierarchy({
     setCardSpace,
     setBranchHeight,
     setData,
+    setDataLayerA,
+    setDataLayerB,
+    setDataLayerC,
   ]);
 
   const totalWidth =
