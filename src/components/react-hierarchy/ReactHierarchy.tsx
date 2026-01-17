@@ -20,6 +20,7 @@ export default function ReactHierarchy({
   // layout store
   const cardWidth = useLayoutStore((s) => s.cardWidth);
   const cardSpace = useLayoutStore((s) => s.cardSpace);
+  const branchHeight = useLayoutStore((s) => s.branchHeight);
 
   const setCardWidth = useLayoutStore((s) => s.setCardWidth);
   const setCardHeight = useLayoutStore((s) => s.setCardHeight);
@@ -53,15 +54,30 @@ export default function ReactHierarchy({
           </div>
         )}
         <div className="layer-a-wrapper">
-          <div className="layer-a-branch-wrapper">layer-a-branch</div>
+          <div
+            className="layer-a-branch-wrapper"
+            style={{ height: branchHeight }}
+          >
+            layer-a-branch
+          </div>
           <div className="layer-a-cards-wrapper">layer-a-cards</div>
         </div>
         <div className="layer-b-wrapper">
-          <div className="layer-b-branch-wrapper">layer-b-branch</div>
+          <div
+            className="layer-b-branch-wrapper"
+            style={{ height: branchHeight }}
+          >
+            layer-b-branch
+          </div>
           <div className="layer-b-cards-wrapper">layer-b-cards</div>
         </div>
         <div className="layer-c-wrapper">
-          <div className="layer-c-branch-wrapper">layer-c-branch</div>
+          <div
+            className="layer-c-branch-wrapper"
+            style={{ height: branchHeight }}
+          >
+            layer-c-branch
+          </div>
           <div className="layer-c-cards-wrapper">layer-c-cards</div>
         </div>
       </div>
