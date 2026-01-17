@@ -6,19 +6,20 @@ import { useLayoutStore } from "../../store/layoutStore";
 import { HierarchyNodeType } from "../../types/hierarchy-node.types";
 import { DEFAULT_MOCK_DATA } from "../../_mock-data/default-mock-data";
 import Header from "../header/Header";
+import { APP_CONST } from "../../constants/app.const";
 
 export type ReactHierarchyProps = {
-  titleType?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   appConfig: AppConfigType;
   appData: HierarchyNodeType;
 };
 
 export default function ReactHierarchy({
-  titleType = "h5",
   appConfig = APP_CONFIG,
   appData = DEFAULT_MOCK_DATA,
 }: ReactHierarchyProps) {
   // layout store
+  const cardWidth = useLayoutStore((s) => s.cardWidth);
+  const cardSpace = useLayoutStore((s) => s.cardSpace);
 
   const setCardWidth = useLayoutStore((s) => s.setCardWidth);
   const setCardHeight = useLayoutStore((s) => s.setCardHeight);
@@ -28,20 +29,29 @@ export default function ReactHierarchy({
   useEffect(() => {
     const { card, branch } = appConfig.layout;
 
-    console.log("appData", appData);
-    console.log("appConfig", appConfig);
     setCardWidth(card.cardWidth);
     setCardHeight(card.cardHeight);
     setCardSpace(card.cardWidth);
     setBranchHeight(branch.height);
   }, [appConfig, setCardHeight, setCardWidth, setCardSpace, setBranchHeight]);
 
+  const totalWidth =
+    (2 * cardSpace + cardWidth) * APP_CONST.numberOfCardsPerLayer;
+
   return (
-    <div className="react-hierarchy">
-      <div className="layout-wrapper">
-        <div className="header-wrapper">
-          <Header />
-        </div>
+    <div
+      className="react-hierarchy"
+      style={{ width: totalWidth, overflow: "hidden" }}
+    >
+      <div
+        className="layout-wrapper"
+        style={{ width: totalWidth, overflow: "hidden" }}
+      >
+        {APP_CONFIG.general.showAppTitle && (
+          <div className="header-wrapper">
+            <Header />
+          </div>
+        )}
         <div className="layer-a-wrapper">
           <div className="layer-a-branch-wrapper">layer-a-branch</div>
           <div className="layer-a-cards-wrapper">layer-a-cards</div>
