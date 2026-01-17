@@ -11,6 +11,7 @@ import { useDataStore } from "../../store/dataStore";
 import { extractNodesForLevels } from "../../util/node.util";
 import LayerACards from "../layer-a-cards/LayerACards";
 import LayerBCards from "../layer-b-cards/LayerBCards";
+import LayerCCards from "../layer-c-cards/LayerCCards";
 
 export type ReactHierarchyProps = {
   appConfig: AppConfigType;
@@ -193,10 +194,11 @@ export default function ReactHierarchy({
                     : calculatedWidthLayerC,
               }}
             >
-              layer-c-cards
+              <LayerCCards />
             </div>
           </div>
         )}
+        <div className="footer" style={{ height: branchHeight }}></div>
       </div>
     </div>
   );
