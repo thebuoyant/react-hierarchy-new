@@ -18,6 +18,7 @@ export default function ReactHierarchy({
   appData = DEFAULT_MOCK_DATA,
 }: ReactHierarchyProps) {
   // layout store
+  const cardHeight = useLayoutStore((s) => s.cardHeight);
   const cardWidth = useLayoutStore((s) => s.cardWidth);
   const cardSpace = useLayoutStore((s) => s.cardSpace);
   const branchHeight = useLayoutStore((s) => s.branchHeight);
@@ -60,7 +61,9 @@ export default function ReactHierarchy({
           >
             layer-a-branch
           </div>
-          <div className="layer-a-cards-wrapper">layer-a-cards</div>
+          <div className="layer-a-cards-wrapper" style={{ height: cardHeight }}>
+            layer-a-cards
+          </div>
         </div>
         <div className="layer-b-wrapper">
           <div
@@ -69,7 +72,9 @@ export default function ReactHierarchy({
           >
             layer-b-branch
           </div>
-          <div className="layer-b-cards-wrapper">layer-b-cards</div>
+          <div className="layer-b-cards-wrapper" style={{ height: cardHeight }}>
+            layer-b-cards
+          </div>
         </div>
         <div className="layer-c-wrapper">
           <div
@@ -78,7 +83,9 @@ export default function ReactHierarchy({
           >
             layer-c-branch
           </div>
-          <div className="layer-c-cards-wrapper">layer-c-cards</div>
+          <div className="layer-c-cards-wrapper" style={{ height: cardHeight }}>
+            layer-c-cards
+          </div>
         </div>
       </div>
     </div>
