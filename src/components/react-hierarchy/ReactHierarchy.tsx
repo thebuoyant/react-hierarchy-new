@@ -32,6 +32,9 @@ export default function ReactHierarchy({
   const setCardHeight = useLayoutStore((s) => s.setCardHeight);
   const setCardSpace = useLayoutStore((s) => s.setCardSpace);
   const setBranchHeight = useLayoutStore((s) => s.setBranchHeight);
+  const setShowLayerA = useLayoutStore((s) => s.setShowLayerA);
+  const setShowLayerB = useLayoutStore((s) => s.setShowLayerB);
+  const setShowLayerC = useLayoutStore((s) => s.setShowLayerC);
 
   // data store
   const setData = useDataStore((s) => s.setData);
@@ -51,9 +54,13 @@ export default function ReactHierarchy({
     const layerData = extractNodesForLevels(appData);
     const { arrayLevelA, arrayLevelB, arrayLevelC } = layerData;
 
-    console.log("arrayLevelA", arrayLevelA);
-    console.log("arrayLevelB", arrayLevelB);
-    console.log("arrayLevelC", arrayLevelC);
+    setDataLayerA(arrayLevelA);
+    setDataLayerB(arrayLevelB);
+    setDataLayerC(arrayLevelC);
+
+    setShowLayerA(arrayLevelA.length > 0);
+    setShowLayerB(arrayLevelB.length > 0);
+    setShowLayerC(arrayLevelC.length > 0);
   }, [
     appConfig,
     appData,
@@ -65,6 +72,9 @@ export default function ReactHierarchy({
     setDataLayerA,
     setDataLayerB,
     setDataLayerC,
+    setShowLayerA,
+    setShowLayerB,
+    setShowLayerC,
   ]);
 
   const totalWidth =
