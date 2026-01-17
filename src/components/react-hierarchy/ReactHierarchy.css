@@ -1,2 +1,11 @@
 .react-hierarchy {
+  .layer-a-wrapper {
+    background-color: red;
+  }
+  .layer-b-wrapper {
+    background-color: green;
+  }
+  .layer-c-wrapper {
+    background-color: blue;
+  }
 }

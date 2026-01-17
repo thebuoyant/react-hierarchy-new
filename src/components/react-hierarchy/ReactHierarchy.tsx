@@ -37,6 +37,10 @@ export default function ReactHierarchy({
   const setShowLayerC = useLayoutStore((s) => s.setShowLayerC);
 
   // data store
+  const dataLayerA = useDataStore((s) => s.dataLayerA);
+  const dataLayerB = useDataStore((s) => s.dataLayerB);
+  const dataLayerC = useDataStore((s) => s.dataLayerC);
+
   const setData = useDataStore((s) => s.setData);
   const setDataLayerA = useDataStore((s) => s.setDataLayerA);
   const setDataLayerB = useDataStore((s) => s.setDataLayerB);
@@ -47,7 +51,7 @@ export default function ReactHierarchy({
 
     setCardWidth(card.cardWidth);
     setCardHeight(card.cardHeight);
-    setCardSpace(card.cardWidth);
+    setCardSpace(card.cardSpace);
     setBranchHeight(branch.height);
     setData(appData);
 
@@ -77,8 +81,21 @@ export default function ReactHierarchy({
     setShowLayerC,
   ]);
 
-  const totalWidth =
-    (2 * cardSpace + cardWidth) * APP_CONST.numberOfCardsPerLayer;
+  const singleCardTotalWidth = 2 * cardSpace + cardWidth;
+
+  const totalWidth = singleCardTotalWidth * APP_CONST.numberOfCardsPerLayer;
+
+  const numberOfItemsLayerA = dataLayerA.length;
+  const numberOfItemsLayerB = dataLayerB.length;
+  const numberOfItemsLayerC = dataLayerC.length;
+
+  const calculatedWidthLayerA = numberOfItemsLayerA * singleCardTotalWidth;
+  const calculatedWidthLayerB = numberOfItemsLayerB * singleCardTotalWidth;
+  const calculatedWidthLayerC = numberOfItemsLayerC * singleCardTotalWidth;
+
+  console.log("cardSpace", cardSpace);
+
+  console.log("numberOfItemsLayerA", numberOfItemsLayerA, singleCardTotalWidth);
 
   return (
     <div
@@ -98,13 +115,25 @@ export default function ReactHierarchy({
           <div className="layer-a-wrapper">
             <div
               className="layer-a-branch-wrapper"
-              style={{ height: branchHeight }}
+              style={{
+                height: branchHeight,
+                width:
+                  calculatedWidthLayerA <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerA,
+              }}
             >
               layer-a-branch
             </div>
             <div
               className="layer-a-cards-wrapper"
-              style={{ height: cardHeight }}
+              style={{
+                height: cardHeight,
+                width:
+                  calculatedWidthLayerA <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerA,
+              }}
             >
               layer-a-cards
             </div>
@@ -114,13 +143,25 @@ export default function ReactHierarchy({
           <div className="layer-b-wrapper">
             <div
               className="layer-b-branch-wrapper"
-              style={{ height: branchHeight }}
+              style={{
+                height: branchHeight,
+                width:
+                  calculatedWidthLayerB <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerB,
+              }}
             >
               layer-b-branch
             </div>
             <div
               className="layer-b-cards-wrapper"
-              style={{ height: cardHeight }}
+              style={{
+                height: cardHeight,
+                width:
+                  calculatedWidthLayerB <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerB,
+              }}
             >
               layer-b-cards
             </div>
@@ -130,13 +171,25 @@ export default function ReactHierarchy({
           <div className="layer-c-wrapper">
             <div
               className="layer-c-branch-wrapper"
-              style={{ height: branchHeight }}
+              style={{
+                height: branchHeight,
+                width:
+                  calculatedWidthLayerC <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerC,
+              }}
             >
               layer-c-branch
             </div>
             <div
               className="layer-c-cards-wrapper"
-              style={{ height: cardHeight }}
+              style={{
+                height: cardHeight,
+                width:
+                  calculatedWidthLayerC <= totalWidth
+                    ? totalWidth
+                    : calculatedWidthLayerC,
+              }}
             >
               layer-c-cards
             </div>
